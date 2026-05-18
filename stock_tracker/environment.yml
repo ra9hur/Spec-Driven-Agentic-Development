@@ -1,0 +1,21 @@
+name: stock-tracker
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - numpy=1.26.4
+  - pandas=2.2.2
+  - requests=2.32.3
+  - pytest=8.2.1
+  - pytest-qt=4.4.0
+  - pytest-mock=3.14.0
+  - pyinstaller=6.7.0
+  - pip:
+    - pyqt6==6.7.0
+    - pyqt6-webengine==6.7.0
+    - pyqtgraph==0.13.7
+    - yfinance==0.2.40
+    - pandas-ta==0.4.71b0
+    - google-genai==0.1.0

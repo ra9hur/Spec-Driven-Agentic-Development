@@ -1,0 +1,55 @@
+QMainWindow {
+    background-color: #0A192F;
+}
+
+QTableWidget {
+    background-color: #112240;
+    color: #CCD6F6;
+    gridline-color: #1E3A5F;
+    border: none;
+    font-size: 12px;
+}
+
+QTableWidget::item:selected {
+    background-color: #233554;
+}
+
+QHeaderView::section {
+    background-color: #233554;
+    color: #CCD6F6;
+    padding: 4px;
+    border: 1px solid #1E3A5F;
+    font-weight: bold;
+}
+
+QSplitter::handle {
+    background-color: #1E3A5F;
+    width: 2px;
+}
+
+QDialog {
+    background-color: #0A192F;
+    color: #CCD6F6;
+}
+
+QLineEdit, QSpinBox, QComboBox {
+    background-color: #112240;
+    color: #CCD6F6;
+    border: 1px solid #1E3A5F;
+    padding: 4px;
+}
+
+QPushButton {
+    background-color: #233554;
+    color: #CCD6F6;
+    border: none;
+    padding: 6px 16px;
+}
+
+QPushButton:hover {
+    background-color: #2D4B6E;
+}
+
+QPushButton:pressed {
+    background-color: #1E3A5F;
+}

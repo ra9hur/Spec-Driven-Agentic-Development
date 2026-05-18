@@ -1,0 +1,12 @@
+data/tracker.db
+data/*.db
+*.pyc
+__pycache__/
+build/
+dist/
+*.spec
+*.egg-info/
+.env
+.env.local
+*.key
+*.pem

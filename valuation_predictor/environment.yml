@@ -1,0 +1,16 @@
+name: preseediq
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - fastapi
+  - uvicorn
+  - pydantic
+  - httpx
+  - pytest
+  - pytest-asyncio
+  - anyio
+  - pip:
+      - httpx
