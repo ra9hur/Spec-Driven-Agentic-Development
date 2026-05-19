@@ -1,11 +1,13 @@
 
-## The Vibe Coding Stack
+## The Workflow
 
-A collection of experimental, fast-prototyped projects built using AI-assisted tools. These projects leverage modern AI-assisted workflows:
+This is a collection of experimental, fast-prototyped projects built using AI-assisted tools. These projects leverage modern AI-assisted workflows:
 
-- **Prompt Engineering**: Iterative building with LLMs.
-- **Rapid Iteration**: Focus on speed and functionality over perfect architecture.
-- **AI Assistants**: Built using tools like Cursor, OpenCode or Cline.
+1. Spec Documents (PRD + Requirements)
+2. System Architecture & Tech Design
+3. Testcase Specifications
+4. Project Setup & Detailed Design Plan
+5. Agent Execution : Built using tools like Cursor, OpenCode or Cline.
 
 
 ## Navigation & Setup
