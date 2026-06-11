@@ -35,6 +35,7 @@ SQL
 echo "✓ Categories inserted"
 
 # ─── Helper: insert 3 products per category ───
+LOCK_COUNTER=9
 insert_products() {
   local slug="$1"
   shift
@@ -42,12 +43,21 @@ insert_products() {
   local name2="$4" desc2="$5" price2="$6"
   local name3="$7" desc3="$8" price3="$9"
 
+  local tag1=$(echo "$name1" | tr '[:upper:]' '[:lower:]' | sed 's/ /,/g' | sed 's/[^a-z0-9,]//g')
+  local tag2=$(echo "$name2" | tr '[:upper:]' '[:lower:]' | sed 's/ /,/g' | sed 's/[^a-z0-9,]//g')
+  local tag3=$(echo "$name3" | tr '[:upper:]' '[:lower:]' | sed 's/ /,/g' | sed 's/[^a-z0-9,]//g')
+
+  local url1="https://loremflickr.com/400/400/${tag1}?lock=${LOCK_COUNTER}"
+  local url2="https://loremflickr.com/400/400/${tag2}?lock=$((LOCK_COUNTER + 1))"
+  local url3="https://loremflickr.com/400/400/${tag3}?lock=$((LOCK_COUNTER + 2))"
+  LOCK_COUNTER=$((LOCK_COUNTER + 3))
+
   $PSQL <<SQL
 WITH cat AS (SELECT id FROM public.categories WHERE slug = '$slug')
 INSERT INTO public.products (name, description, price, category_id, image_url) VALUES
-  ('$name1', '$desc1', $price1, (SELECT id FROM cat), '/images/$slug-1.svg'),
-  ('$name2', '$desc2', $price2, (SELECT id FROM cat), '/images/$slug-2.svg'),
-  ('$name3', '$desc3', $price3, (SELECT id FROM cat), '/images/$slug-3.svg')
+  ('$name1', '$desc1', $price1, (SELECT id FROM cat), '${url1}'),
+  ('$name2', '$desc2', $price2, (SELECT id FROM cat), '${url2}'),
+  ('$name3', '$desc3', $price3, (SELECT id FROM cat), '${url3}')
 ON CONFLICT DO NOTHING;
 SQL
 }
