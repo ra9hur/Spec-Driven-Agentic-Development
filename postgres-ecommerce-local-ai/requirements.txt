@@ -1,0 +1,94 @@
+# =============================================================================
+# Postgres E-Com - System Requirements
+# =============================================================================
+# This file lists all required software installables for the development
+# environment. Install in the order listed below.
+#
+# Target OS: Linux (Ubuntu 22.04+ / Debian 12+), macOS (14+), WSL2 on Windows
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# 1. Runtime & Package Manager
+# ---------------------------------------------------------------------------
+node.js >= 18.0.0          # Next.js 14 runtime (https://nodejs.org)
+npm >= 9.0.0               # Node package manager (bundled with Node.js)
+
+# ---------------------------------------------------------------------------
+# 2. Database Engine & Extension
+# ---------------------------------------------------------------------------
+postgresql >= 13.0         # Relational database cluster
+                           # Install: apt install postgresql postgresql-contrib
+                           # Verify: psql --version
+
+pgvector >= 0.5.0          # Open-source vector similarity extension
+                           # Install: https://github.com/pgvector/pgvector#installation
+                           # Verify: SELECT extversion FROM pg_extension WHERE extname = 'vector';
+
+# ---------------------------------------------------------------------------
+# 3. Local AI Engine
+# ---------------------------------------------------------------------------
+ollama >= 0.1.0            # Local LLM runtime
+                           # Install: curl -fsSL https://ollama.ai/install.sh | sh
+                           # Verify: ollama --version
+                           # Model: nomic-embed-text (pull separately below)
+
+# ---------------------------------------------------------------------------
+# 4. Ollama Model (downloaded at runtime)
+# ---------------------------------------------------------------------------
+nomic-embed-text:latest    # Text embedding model (768-dimension output)
+                           # Pull: ollama pull nomic-embed-text
+                           # Verify: ollama list | grep nomic-embed-text
+
+# ---------------------------------------------------------------------------
+# 5. Development Tools
+# ---------------------------------------------------------------------------
+git >= 2.30.0              # Version control
+typescript >= 5.0.0        # TypeScript compiler (installed via npm)
+
+# ---------------------------------------------------------------------------
+# 6. Node Dependencies (installed via package.json)
+# ---------------------------------------------------------------------------
+# Run: npm install
+# Core packages:
+#   next@14
+#   react@18
+#   react-dom@18
+#   pg@8.11 (PostgreSQL client)
+#   @supabase/supabase-js (auth client)
+#
+# Dev packages:
+#   typescript@5
+#   tailwindcss@3.4
+#   jest@29
+#   @playwright/test@1.40
+#   @types/node
+#   @types/react
+
+# ---------------------------------------------------------------------------
+# Quick-Start Installation Script
+# ---------------------------------------------------------------------------
+# Copy and paste the block below into your terminal:
+#
+#   # 1. System packages (Ubuntu/Debian)
+#   sudo apt update && sudo apt install -y postgresql postgresql-contrib git curl
+#
+#   # 2. Node.js via nvm
+#   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+#   nvm install 18
+#
+#   # 3. Ollama
+#   curl -fsSL https://ollama.ai/install.sh | sh
+#
+#   # 4. PostgreSQL setup
+#   sudo systemctl start postgresql
+#   sudo -u postgres psql -c "CREATE DATABASE postgres_ecom;"
+#   sudo -u postgres psql -c "CREATE EXTENSION vector;"
+#
+#   # 5. Ollama model
+#   ollama pull nomic-embed-text
+#
+#   # 6. Project setup
+#   npm install
+#   npm run dev
+#
+# =============================================================================
