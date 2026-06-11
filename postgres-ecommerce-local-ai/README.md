@@ -393,7 +393,7 @@ Authentication uses a custom implementation (no cloud dependency):
 ## Troubleshooting
 
 | Problem | Fix |
-|---|---|---|
+|---|---|
 | Admin page redirects to login | Log in first, then grant admin role in DB |
 | AI search returns no results | Ensure Ollama is running; run `curl -X POST http://localhost:3000/api/seed` |
 | `auth.uid()` function does not exist | Migration `005_custom_auth.sql` creates a stub — ensure it was run |
